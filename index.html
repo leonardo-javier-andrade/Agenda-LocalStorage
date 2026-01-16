@@ -7,11 +7,19 @@
     <link rel="stylesheet" href="./src/styles/main.css">
 </head>
 <body>
+    <div class="welcome" id="bienvenida">
+        <h1>Bienvenido a tu Agenda Personal</h1>
+        <h3>Agrega tu primer contacto!!</h3>
+        <button id="start">Comenzar</button>
+    </div>
+
+
     <article class="container">
         <h1>Agenda de contactos</h1>
         <form action="">
             <input type="text" id="name" placeholder="Nombre" autocomplete="off" >
             <input type="email" id="email" placeholder="Email" autocomplete="off" >
+            <input type="hidden" id="ID">
             <button id="btn-cancel" type="button">Cancelar</button>
             <button>Guardar</button>
         </form>
@@ -31,7 +39,7 @@
 
 
         </table>
-
+        <button id="Clearcontact">Limpiar todos los  Contactos</button>
 
     </article>
 
