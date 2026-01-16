@@ -15,18 +15,6 @@ if (contactsToLocalStorage !== null) {
 } else {
     contacts = []
 }
-// let contacts 
-
-//  //Adquirir contactos desde local Storage desde una base de datos de internet navegador
-//  let contactsToLocalStorage = JSON.parse(localStorage.getItem("contacts"))
-
-//  if (contactsToLocalStorage = undefined) {
-//      contacts = []
-//  } 
-//  else { 
-//      contacts = contactsToLocalStorage
-//  }
-
 
 
 
@@ -37,22 +25,19 @@ const rendercontacts = () => {
     $contaactlist.innerHTML = ``
 
 
-    for (let i = 0; i <= contacts.length ; i++) {
-     // crear una fila
+    for (let i = 0; i < contacts.length ; i++) {
+     // creamos una constante Row, la cual crea una fila de tabla
      const row = document.createElement("tr")
      // agregar contenido html
      row.innerHTML = ` 
         <td> ${contacts[i].name}</td>
         <td>${contacts[i].email}</td>
         <td>
-            <button> Actualizar </button>
-            <button> Borrar </button>
+            <button class = "btn-update" onclick = "updatecontact(${i})"> Actualizar </button>
+            <button class = "btn-delete" onclick="deletecontact(${i})" > Borrar </button>
         </td>`
      // agregar la fila a la pag
      $contaactlist.appendChild(row)
-
-
-
     }
 }
 
@@ -98,6 +83,20 @@ const sendForm = (event) => {
 
 }
 
+const deletecontact = (index) => {
+    console.log (index, "Borrando un contacto accion")
+    contacts.splice(index,1)
+    console.log(contacts)
+    localStorage.setItem("contacs",JSON.stringify(contacts))
+    rendercontacts()
+
+}
+
+const updatecontact = (index) => {
+    $nameInput.value = contacts[index].name
+    $emailInput.value = contacts[index].email
+   
+}
 
 // Al formulario dejarlo en escucha hasta que suceda un evento
 // en este caso el evento es enviar, y cuando suceda se ejecute una funcion
